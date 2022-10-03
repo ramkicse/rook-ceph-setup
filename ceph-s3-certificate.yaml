@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ceph-object-store
+  namespace: rook-ceph
+spec:
+  secretName: ceph-object-store-tls
+  isCA: false
+  usages:
+    - server auth
+    - client auth
+  duration: 8760h # 90d
+  renewBefore: 360h # 15d
+  dnsNames:
+  - "s3.bio.pune.cdac.in"
+  - "rook-ceph-rgw-object-store"
+  - "rook-ceph-rgw-object-store.rook-ceph"
+  - "rook-ceph-rgw-object-store.rook-ceph.svc"
+  issuerRef:
+    name:  ca-issuer
+    kind: ClusterIssuer
