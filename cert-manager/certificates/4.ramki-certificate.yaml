@@ -1,0 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ramki-domain-server
+  namespace: istio-system
+spec:
+  secretName: wild-card-tls
+  commonName: "*.ramkitech.com"
+  isCA: false
+  usages:
+    - server auth
+    - client auth
+  duration: 8760h # 365d
+  renewBefore: 360h # 15d
+  dnsNames:
+  - "*.ramkitech.com"
+  issuerRef:
+    name:  ca-issuer
+    kind: ClusterIssuer

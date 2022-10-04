@@ -1,0 +1,28 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ramki-gateway
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway # ingressgateway  use istio default controller
+  servers:
+  
+  - port:
+      number: 80
+      name: gw-http
+      protocol: HTTP
+    hosts:
+    - '*'    
+    tls:
+      httpsRedirect: true
+ 
+  - port:
+      number: 443
+      name: https-termination
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: wild-card-tls
+    hosts:
+    - "*"

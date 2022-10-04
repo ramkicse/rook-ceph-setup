@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ceph-virtual-service
+  namespace: istio-system
+spec:
+  hosts:
+  - ceph.ramkitech.com
+  gateways:
+  - ramki-gateway
+  http:
+  - route:
+    - destination:
+        host: rook-ceph-mgr-dashboard.rook-ceph.svc.cluster.local
+        port:
+            number: 7000
+    timeout: 30s
+  
+  
