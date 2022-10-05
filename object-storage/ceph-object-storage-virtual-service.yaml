@@ -5,9 +5,9 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - s3-ceph.bio.pune.cdac.in
+  - s3.ramkitech.com
   gateways:
-  - bio-gateway
+  - ramki-gateway
   http:
   - route:
     - destination:
