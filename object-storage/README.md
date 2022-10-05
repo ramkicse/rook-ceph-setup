@@ -1,5 +1,10 @@
 
 
+# if u need to increase max pg per osd
+```
+ceph config set mon mon_max_pg_per_osd 500
+```
+
 # Ceph Object Storage Setup
 
 ## Step 1 : Create SSL Certificate for Ceph Object deamon usinf Cert manager
